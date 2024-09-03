@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Pontuação do LinkedIn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora de Pontuação do LinkedIn</h1>
+
+    <div class="form-group">
+        <label><input type="checkbox" id="foto"> Foto de Perfil</label>
+    </div>
+    <div class="form-group">
+        <label><input type="checkbox" id="titulo"> Título Relevante</label>
+    </div>
+    <div class="form-group">
+        <label><input type="checkbox" id="resumo"> Resumo Bem Escrito</label>
+    </div>
+    <div class="form-group">
+        <label><input type="checkbox" id="experiencias"> Experiências Profissionais Detalhadas</label>
+    </div>
+    <div class="form-group">
+        <label><input type="checkbox" id="habilidades"> Habilidades Relevantes</label>
+    </div>
+    <div class="form-group">
+        <label><input type="checkbox" id="recomendacoes"> Recomendações Recebidas</label>
+    </div>
+    <div class="form-group">
+        <label><input type="checkbox" id="formacao"> Formação Acadêmica Completa</label>
+    </div>
+    <div class="form-group">
+        <label><input type="checkbox" id="cursos"> Cursos e Certificações</label>
+    </div>
+    <div class="form-group">
+        <label><input type="checkbox" id="idiomas"> Idiomas Listados</label>
+    </div>
+    <div class="form-group">
+        <label><input type="checkbox" id="atividade"> Perfil Ativo (Publicações/Interações)</label>
+    </div>
+
+    <button onclick="calcularPontuacao()">Calcular Pontuação</button>
+
+    <div id="resultado" class="result"></div>
+
+    <script>
+        function calcularPontuacao() {
+            let pontuacao = 0;
+
+            // Pontuação para cada critério
+            pontuacao += document.getElementById('foto').checked ? 1 : 0;
+            pontuacao += document.getElementById('titulo').checked ? 1 : 0;
+            pontuacao += document.getElementById('resumo').checked ? 2 : 0;
+            pontuacao += document.getElementById('experiencias').checked ? 2 : 0;
+            pontuacao += document.getElementById('habilidades').checked ? 1 : 0;
+            pontuacao += document.getElementById('recomendacoes').checked ? 1 : 0;
+            pontuacao += document.getElementById('formacao').checked ? 1 : 0;
+            pontuacao += document.getElementById('cursos').checked ? 1 : 0;
+            pontuacao += document.getElementById('idiomas').checked ? 1 : 0;
+            pontuacao += document.getElementById('atividade').checked ? 1 : 0;
+
+            // Classificação
+            let classificacao = '';
+            if (pontuacao <= 4) {
+                classificacao = 'Ruim';
+            } else if (pontuacao <= 8) {
+                classificacao = 'OK';
+            } else {
+                classificacao = 'Ótimo';
+            }
+
+            // Exibir resultado
+            document.getElementById('resultado').innerText = `Pontuação: ${pontuacao} - ${classificacao}`;
+        }
+    </script>
+
+</body>
+</html>
